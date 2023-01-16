@@ -9,14 +9,15 @@ body {
 
 #drawing {
 	width: 100%;
-	height: 300px;
+	height: 0px;
 }
+
 tspan {
-	fill: blue;
+	/* fill: blue; */
 	/* stroke: #f06; */
 	/* stroke-width: 0.85; */
-    font-family: 'Helvetica';
-    font-size: 30px;
+    /* font-family: 'Helvetica'; */
+    /* font-size: 30px; */
 }
 input[type=text] {
 	width: 100%;
@@ -26,29 +27,39 @@ input[type=text] {
     color: #666;
 }
 
+
 svg {
     width: 100%;
     height: 100vh;
 }
 
+
 path {
+    animation: rotate 2s ease;
+    
+
+    /* mix-blend-mode: difference; */
+    /* fill: red; */
+    /* opacity: 0.3; */
+    /* stroke-width: 50; */
+    /* stroke:aquamarine;  */
     stroke-linejoin: round;
-    border: dotted;
+    /* border: dotted; */ */
     /* stroke: red; */
     /* animation: dingding 5.5s ease var(--delay) both infinite; */
-    transform-origin: 0 0; 
-    animation: rotate 0.5 ease;
+    /* transform-origin: 0 0; 
+    animation: rotate 0.5 ease; */
 }
 
 /* wird von überklassen überschrieben */
 path.touch {
-    stroke: black;
+    /* stroke: black; */
 }
 
 path.thicc{
     /* stroke: blue; */
-    stroke-width: 10;
-    stroke-linejoin: round;
+    /* stroke-width: 1;
+    stroke-linejoin: round; */
 }
 
 @keyframes dingding {
@@ -57,11 +68,12 @@ path.thicc{
     }
 }
 
-@keyframes rotate {
+/* @keyframes rotate {
     from{
         transform:rotate(0deg);
+        transform-origin: 500px 500px;
     }
     to{
-        transform:rotate(90deg);
+        transform:rotate(360deg);
     }
-}
+} */
