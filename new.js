@@ -154,10 +154,10 @@ Array(10)
 
 
 // und mit Mouse click
-const click = (e) => {
+// const click = (e) => {
   
-};
-document.addEventListener("click", click);
+// };
+// document.addEventListener("click", click);
 
 
 

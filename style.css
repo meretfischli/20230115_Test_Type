@@ -4,6 +4,7 @@
 }
 
 body {
+    font-family: 'Helvetica';
     height: 100vh;
 }
 
@@ -28,6 +29,10 @@ body {
       margin-left: 0%;
       width: 100%;
     }
+}
+
+#button{
+    background-color: white;
 }
 
 tspan {
