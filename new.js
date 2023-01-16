@@ -153,7 +153,7 @@ Array(10)
 
 
 
-// mit Mouse click
+// und mit Mouse click
 const click = (e) => {
   
 };
