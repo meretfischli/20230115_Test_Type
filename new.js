@@ -7,6 +7,9 @@ let fxhash =
     .map((_) => alphabet[(Math.random() * alphabet.length) | 0])
     .join("");
 
+// fxhash = 'oo5m2pVmYTroT4VQQV9LW7CQsoeBzwTXvpfboRSjzZMC7gwk1RT'
+
+//mit ?seed= kann ich den seed an der URL anhängen damit
 const params = new URLSearchParams(location.search);
 if (params.has("seed")) {
   const seed = params.get("seed");
@@ -49,10 +52,8 @@ var draw = SVG(svg).addTo("#drawing");
 const r = fxrand;
 
 const colors = [
-  ["#39FF14", "#FF00FF", "#F1C40F", "#E67E22"],
-  ["#16A085", "#FF4501", "#8E44AD", "#2C3E50"],
-  ["#7F8C8D", "#F39C12", "#00FF00", "##220033"],
-  ["#FF4501", "#5730F9", "#220033", "#FF1C4C"],
+  ["black", "white", "red"],
+  ["white", "black", "red"],
 ];
 
 const pick = (d) => d[Math.floor(r() * d.length)];
@@ -88,6 +89,31 @@ const line = (position) => {
   // p.setAttribute("stroke", pick(pick(colors)))
   // svg.append(p)
 
+  function ellipse(x, y, z) {
+    const g = document.createElementNS(ns, "g");
+    g.setAttribute('transform',`translate(${x} ${y})`);
+    g.setAttribute("fill", pick(colors))
+  
+    const circle = document.createElementNS(ns, "circle");
+    //diese attribute müssen so heissen "cx", "cy", "r"
+    circle.setAttribute("cx", 0);
+    circle.setAttribute("cy", 0);
+    circle.setAttribute("r", z);
+    //circle.setAttribute("fill", pick(colors));
+    circle.setAttribute("style",`--time: ${0.2 + r() * 30}s; --color: ${pick(pick(colors))}`)
+  
+    //circle.setAttribute("style",`--time: ${0.2 + Math.random() * 2}s; --color: HSL(${Math.random() * 360} 100% 50%)`)
+    g.append(circle);
+    svg.append(g);
+  }
+  
+  for (let i = 0; i < 20; i++) {
+    z = r() * 100;
+    x = r() * (1000 - z);
+    y = r() * (1000 - z);
+    ellipse(x, y, z);
+  }
+
   let input = document.querySelector("input[type=text]");
   let text = draw.text(function (add) {
     add.tspan(input.value);
@@ -106,31 +132,10 @@ const line = (position) => {
       textPath.tspan(this.value);
     };
   }
-  text.font({ fill: "blue", family: "Helvetica", size: "100" });
+  text.font({ fill: "blue", family: "Helvetica", size: r()*200 });
 
   svg.append(textPath);
 };
-
-//Circles
-
-function ellipse(x, y, z) {
-  const circle = document.createElementNS(ns, "circle");
-  //diese attribute müssen so heissen "cx", "cy", "r"
-  circle.setAttribute("cx", x);
-  circle.setAttribute("cy", y);
-  circle.setAttribute("r", z);
-  circle.setAttribute("fill", "red");
-
-  svg.append(circle);
-}
-
-for (let i = 0; i < 100; i++) {
-  z = Math.random() * 100;
-  x = Math.random() * (1000 - z);
-  y = Math.random() * (1000 - z);
-  ellipse(x, y, z);
-}
-
 
 //Anfangskoordinaten M
 // const total = Math.floor(r() * 50 + 37);
@@ -143,6 +148,21 @@ Array(10)
 
     line([x, y]);
   });
+
+//Circles
+
+
+
+// mit Mouse click
+const click = (e) => {
+  
+};
+document.addEventListener("click", click);
+
+
+
+
+
 
 // –––––––––––– download and save svg
 
@@ -173,7 +193,7 @@ const save = (svg) => {
 // mit s key
 const keyHandler = (event) => {
   console.log(event.key);
-  if (event.key === "s") {
+  if (event.key === "1") {
     save(svg);
   }
 };

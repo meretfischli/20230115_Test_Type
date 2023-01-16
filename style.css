@@ -12,6 +12,24 @@ body {
 	height: 0px;
 }
 
+#change {
+    padding: 10;
+    animation-duration: 3s;
+    animation-name: slidein;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+}
+
 tspan {
 	/* fill: blue; */
 	/* stroke: #f06; */
@@ -33,9 +51,25 @@ svg {
     height: 100vh;
 }
 
+circle {
+    transition: transform 0.2s;
+    /* transform-origin: center; */
+    animation: foo alternate infinite;
+    animation-duration: var(--time);
+    fill: var(--color)
+}
+
+@keyframes foo {
+    from {}
+
+    to { 
+        transform: scale(0.5)
+    }
+}
+
 
 path {
-    animation: rotate 2s ease;
+    /* animation: rotate 2s ease; */
     
 
     /* mix-blend-mode: difference; */
@@ -77,3 +111,14 @@ path.thicc{
         transform:rotate(360deg);
     }
 } */
+
+@keyframes scale {
+    from{
+        /* transform-origin: 500px 500px; */
+        transform: scale(1)
+    }
+    to{
+        /* transform-origin: 500px 500px; */
+        transform: scale(.5);
+    }
+}
