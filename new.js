@@ -18,7 +18,9 @@ const params = new URLSearchParams(location.search);
 if (params.has("seed")) {
   const seed = params.get("seed");
   fxhash = seed;
+  
 }
+document.getElementById("seed").innerHTML = "?seed=" + fxhash;
 
 let b58dec = (str) =>
   [...str].reduce((p, c) => (p * alphabet.length + alphabet.indexOf(c)) | 0, 0);
