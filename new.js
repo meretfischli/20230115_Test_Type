@@ -9,6 +9,10 @@ let fxhash =
 
 // fxhash = 'oo5m2pVmYTroT4VQQV9LW7CQsoeBzwTXvpfboRSjzZMC7gwk1RT'
 
+//doesnt work:
+// fxhash = document.createElement("p");
+// document.body.append(fx)
+
 //mit ?seed= kann ich den seed an der URL anhängen damit
 const params = new URLSearchParams(location.search);
 if (params.has("seed")) {
